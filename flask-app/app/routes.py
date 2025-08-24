@@ -1,6 +1,6 @@
 from flask import Blueprint, request, jsonify, send_file
-from .s3_utils import upload_file_to_s3, list_files_in_s3, download_file_from_s3
-from .rekognise_utils import analyze_image
+from .tools.s3_utils import upload_file_to_s3, list_files_in_s3, download_file_from_s3
+from .tools.rekognise_utils import analyze_image
 import io
 
 routes = Blueprint("routes", __name__)
@@ -45,3 +45,4 @@ def analyse_file():
 
     upload_file_to_s3(file, file.filename)
     return analyze_image(file.filename)
+

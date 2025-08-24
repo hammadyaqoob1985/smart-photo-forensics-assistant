@@ -1,6 +1,7 @@
 import boto3
 from botocore.exceptions import NoCredentialsError
 from .config import Config
+from langchain.agents import tool
 
 session = boto3.session.Session(
     aws_access_key_id=Config.AWS_ACCESS_KEY_ID,
@@ -9,6 +10,7 @@ session = boto3.session.Session(
 )
 s3 = session.client("s3")
 
+@tool
 def upload_file_to_s3(file_obj, filename):
     try:
         s3.upload_fileobj(file_obj, Config.S3_BUCKET_NAME, filename, ExtraArgs={"ACL": "private"})

@@ -1,8 +1,9 @@
 import boto3
 from .config import Config
-
+from langchain.agents import tool
 rekognition_client = boto3.client("rekognition", region_name=Config.AWS_DEFAULT_REGION)
 
+@tool
 def analyze_image(image_key):
     """
     Uses AWS Rekognition to detect labels/objects in an image.
