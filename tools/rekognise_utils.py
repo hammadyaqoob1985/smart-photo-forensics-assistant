@@ -10,8 +10,8 @@ def analyze_image(filename: str):
     """
     response = rekognition_client.detect_labels(
         Image={"S3Object": {"Bucket": Config.S3_BUCKET_NAME, "Name": filename}},
-        MaxLabels=10,
-        MinConfidence=75
+        MaxLabels=50,
+        MinConfidence=50
     )
 
     return [

@@ -1,6 +1,6 @@
 import uvicorn
 from fastapi import FastAPI, File, Form, UploadFile
-from graph.graph import graph
+from graph.analyze_graph import graph
 import boto3
 from botocore.exceptions import NoCredentialsError
 import io
